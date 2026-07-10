@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ポイント調整</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>ポイント調整</h1>
+
+{% if message %}
+    <p style="color: green;">{{ message }}</p>
+{% endif %}
+
+<form method="POST">
+    <label>ユーザーID：</label>
+    <input type="text" name="user_id" required>
+
+    <label>ポイント数：</label>
+    <input type="number" name="amount" required>
+
+    <label>操作：</label>
+    <select name="mode">
+        <option value="add">増やす</option>
+        <option value="subtract">減らす</option>
+    </select>
+
+    <button type="submit">実行</button>
+</form>
+
+<hr>
+
+<!-- ★ポイント0の人に1000付与するボタン（小さめ）★ -->
+<a href="/admin/give_zero_bonus" class="btn-small">
+    ポイント0のユーザーに1000ポイント付与
+</a>
+
+<style>
+.btn-small {
+    display: inline-block;
+    padding: 6px 12px;        /* ← 小さめに調整 */
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;       /* ← 少し小さめ */
+    font-size: 14px;          /* ← 文字も少し小さく */
+    margin-top: 10px;
+}
+.btn-small:hover {
+    background: #45a049;
+}
+</style>
+
+</body>
+</html>

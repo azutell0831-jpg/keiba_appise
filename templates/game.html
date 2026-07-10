@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/static/style.css">
+
+<div class="center-box">
+    <h2>キャラ投票ゲーム</h2>
+
+    <p>ユーザー：{{ user.id }}</p>
+    <p>所持ポイント：<span id="money">{{ user.money }}</span> pt</p>
+
+    <form method="POST">
+        <label>投票するキャラ</label>
+        <select name="horse">
+            <option value="1">1番キャラ</option>
+            <option value="2">2番キャラ</option>
+            <option value="3">3番キャラ</option>
+            <option value="4">4番キャラ</option>
+        </select>
+
+        <label>投票ポイント</label>
+        <input name="amount" type="number" placeholder="ポイント">
+
+        <button type="submit">投票する</button>
+    </form>
+
+    <h3>あなたの投票履歴</h3>
+    <table>
+        <tr><th>キャラ</th><th>ポイント</th></tr>
+        {% for b in bets %}
+        <tr>
+            <td>{{ b.horse }}</td>
+            <td>{{ b.amount }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if result %}
+    <h3>結果発表</h3>
+    <p>勝ちキャラ：{{ result }}</p>
+    {% endif %}
+</div>
+
+<script src="/static/script.js"></script>
